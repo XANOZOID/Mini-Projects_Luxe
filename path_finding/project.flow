@@ -3,7 +3,7 @@
   project : {
 
       //These first two are required
-    name : 'isometric_grid',
+    name : 'Motion Planning Movement',
     version : '1.0.0',
     author : 'Abe Noll',
 
@@ -11,8 +11,8 @@
       //The package is important, it's used 
       //for save locations, initializing mobile project files etc
     app : {
-      name : 'isometric_grid',
-      package : 'com.aben.isogrid'
+      name : 'motion_planning',
+      package : 'com.aben.mpmovement'
     },
 
       //This configures the build process
