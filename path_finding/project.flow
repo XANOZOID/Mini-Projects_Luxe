@@ -1,0 +1,33 @@
+{
+
+  project : {
+
+      //These first two are required
+    name : 'isometric_grid',
+    version : '1.0.0',
+    author : 'Abe Noll',
+
+      //This configures your app.
+      //The package is important, it's used 
+      //for save locations, initializing mobile project files etc
+    app : {
+      name : 'isometric_grid',
+      package : 'com.aben.isogrid'
+    },
+
+      //This configures the build process
+    build : {
+      dependencies : {
+        luxe : '*'
+      }
+    },
+
+      //Copies over all the assets to the output
+    files : {
+      assets : 'assets/'
+    }
+
+  } //project
+
+}
+
