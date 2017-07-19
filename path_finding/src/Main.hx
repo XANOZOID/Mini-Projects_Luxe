@@ -113,36 +113,6 @@ class MouseBox {
 	}
 }
 
-class ShiftedComponent extends luxe.tween.ComponentPath implements luxe.tween.IComponentPath {
-	//var _shiftedComp : luxe.tween.ComponentPath;
-    //public var start(get_start,set_start):Float;
-    //public var end (get_end, null):Float;
-	var _shifted: Float;
-	
-	public function new( path: luxe.tween.ComponentPath, shifted: Float ){
-		//_shiftedComp = path;
-		super();
-		start = path.start;
-		this.paths = path.paths;
-		_shifted = shifted;
-		this.totalStrength = path.totalStrength;
-		trace('we have shifted: ${shifted} and our paths is: ${paths}');
-	}
-
-    //public function addPath (path:BezierPath):Void{ _shiftedComp.addPath(path); }
-
-    public override function calculate (k:Float):Float{
-		trace("going places!!!");
-		trace('what is this path ${paths}');
-		return super.calculate( k + _shifted );
-	}
-	//public inline function set_start( s:Float ):Float return _shiftedComp.start = s;
-	//public inline function get_start(): Float return _shiftedComp.start;
-
-    //inline function get_end ():Float return _shiftedComp.get_end();
-}
-
-
 class Player {
 	var _sprite: Sprite;
 	var _anim: SpriteAnimation;
@@ -181,15 +151,9 @@ class Player {
 		//_path.line( point.x, point.y);
 		var push = point.x / Luxe.screen.w ;
 		
-		//_path.x.start = push * _path.x.end;
-		//_path.y.start = push * _path.y.end;
-		
-		var shiftedX: IComponentPath = new ShiftedComponent( cast _path.x, push);
-		var shiftedY: IComponentPath = new ShiftedComponent( cast _path.y, push);
-		
 		//trace(' these are the starts: ( ${_path.x.start} , ${_path.y.start} ) -> ( ${_path.x.end} , ${_path.y.end} )' );
-		
-		Actuate.motionPath( _sprite.pos, 3, {x:shiftedX, y: shiftedY}, 
+		_sprite.pos.set_xy( _path.x.calculate(1), _path.y.calculate(1) );
+		Actuate.motionPath( _sprite.pos, 3, {x:_path.x, y: _path.y}, 
 			true)
 			.ease(Linear.easeNone);
 	}
