@@ -1,0 +1,14 @@
+{
+    "stand" : {
+        "frame_size":{ "x":"16", "y":"16" },
+        "frameset": ["6-7"],
+        "loop": "true",
+        "speed": "8"
+    },
+    "walk" : {
+        "frame_size":{ "x":"16", "y":"16" },
+        "frameset": ["1-3"],
+        "loop": "true",
+        "speed": "9"
+    }
+}
